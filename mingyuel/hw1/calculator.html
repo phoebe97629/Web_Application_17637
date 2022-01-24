@@ -9,7 +9,7 @@
         text-align:center;
         font-size:20px;
         border-radius: 8px;
-        font-size: 25px;}
+        font-size: 40px;}
         .button_num:hover{
         background-color: #D86880;
         color:white;}
@@ -17,42 +17,43 @@
         text-align:center;
         font-size:20px;
         border-radius: 8px;
-        font-size: 25px;}
+        font-size: 40px;}
         .button_op:hover{background-color: #9b7779;color:white;}
         .button2::after{
         content:"";
         flex:auto;}
+        .center{
+        width:60%;
+        border: 3px solid #f1dfcf;
+        padding: 10px;}
+        .wrapper {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap:0px;}
+
     </style>
 </head>
 <body>
-<div class="row">
-    <input id="output" type="text" name="output" style="height:30px; background-color:#f1dfcf" value="0">
+<div class="center">
+    <p>0</p>
 </div>
-<div class = 'row'>
+<div class = 'wrapper'>
     <button id="key-7" class="button button_num" >7</button>
     <button id="key-8" class="button button_num" >8</button>
     <button id="key-9" class="button button_num" >9</button>
-    <button id="key-plus" class="button2 button_op" >+</button>
-</div>
-<div class = 'row'>
+    <button id="key-plus" class="button2 button_op" >&plus;</button>
     <button id="'key-4" class="button button_num">4</button>
     <button id = 'key-5' class="button button_num" >5</button>
     <button id="key-6" class="button button_num" >6</button>
-    <button id="key-minus" class="button2 button_op" >-</button>
-</div>
-
-<div class = 'row'>
+    <button id="key-minus" class="button2 button_op" >&minus;</button>
     <button id="key-1" class="button button_num">1</button>
     <button id="key-2" class="button button_num">2</button>
     <button id="key-3" class="button button_num">3</button>
-    <button id="key-times" class="button2 button_op">x</button>
-</div>
-
-<div class="row">
+    <button id="key-times" class="button2 button_op">&times;</button>
     <span style="padding-left:30px"></span>
     <button id="key-0" class="button button_num">0</button>
-    <button id="key-push" class="button2 button_op">↑</button>
-    <button id="key-divide" class="button2 button_op">÷</button>
+    <button id="key-push" class="button2 button_op">&uparrow;</button>
+    <button id="key-divide" class="button2 button_op">&divide;</button>
 </div>
 
 
