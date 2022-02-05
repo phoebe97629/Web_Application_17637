@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>calculator</title>
+    <style>
+        div {padding: 15px}
+        .button{background-color:#F9BB50;
+        text-align:center;
+        font-size:20px;
+        border-radius: 15px;
+        font-size: 40px;}
+        .button_num:hover{
+        background-color: #C88C59;
+        color:white;}
+        .button2{background-color:#beaaad;
+        text-align:center;
+        font-size:20px;
+        border-radius: 15px;
+        font-size: 40px;}
+        .button_op:hover{background-color: #9b7779;color:white;}
+        .button2::after{
+        content:"";
+        flex:auto;}
+        .center{
+        right:1343.0px;
+        border: 3px solid #f1dfcf;
+        padding: 10px;
+        background-color: #f1dfcf;}
+        .wrapper {
+           display: grid;
+           grid-template-columns: repeat(4, 1fr);
+           gap:0px;}
+
+    </style>
+    <script>
+        let stack = ['0']
+        let entering = true
+
+        function change_color(){
+        if (entering){document.getElementById("output").style.backgroundColor = '#f1dfcf'}
+        else{
+        if (document.getElementById("output").innerHTML=== 'divide by zero' || document.getElementById("output").innerHTML=== 'stack overflow' || document.getElementById("output").innerHTML=== 'stack underflow'){document.getElementById("output").style.backgroundColor = '#5C2223'}else{document.getElementById("output").style.backgroundColor = '#D8E2DA'}}}
+
+
+        function init(){
+           stack = ['0']
+           entering = true
+           let inputElement = document.getElementById("output")
+           inputElement.innerHTML = 0
+           }
+
+
+        function input(buttonElement) {
+          let init = buttonElement.innerHTML
+          let inputElement = document.getElementById("output")
+          let oldVal = inputElement.innerHTML
+          if (entering == true){if (oldVal === '0'){
+              let newVal = init
+              inputElement.innerHTML = newVal
+              stack.pop()
+              stack.push(newVal)
+              }
+          else{
+              let newVal = oldVal + init
+              inputElement.innerHTML = newVal
+              stack.pop()
+              stack.push(newVal)
+              }
+          }
+          else if (entering === false && inputElement.innerHTML === 'divide by zero'){
+          let newVal = init
+          inputElement.innerHTML = newVal
+          stack.pop()
+          stack.push(newVal)
+
+          entering = true}
+          else if (entering === false && inputElement.innerHTML === 'stack underflow'){
+          let newVal = init
+          inputElement.innerHTML = newVal
+          stack.pop()
+          stack.push(newVal)
+
+          entering = true}
+          else if (entering === false && inputElement.innerHTML === 'stack overflow'){
+          let newVal = init
+          inputElement.innerHTML = newVal
+          stack.pop()
+          stack.push(newVal)
+
+          entering = true}
+          else{
+          let newVal = init
+          inputElement.innerHTML = newVal
+
+          stack.push(newVal)
+
+          entering = true}}
+
+
+         function push(){
+           let numbers = document.getElementById("output")
+           let num = numbers.innerHTML
+           if (stack.length === 3){
+           init()
+           numbers.innerHTML = 'stack overflow'
+           entering = false
+
+           }
+           else{
+           numbers.innerHTML = '0'
+           stack.push(0)
+           entering = true
+           }}
+
+         function add(){
+           let numbers = document.getElementById("output")
+
+           if (entering){
+           if (stack.length <2){
+           init()
+           numbers.innerHTML = 'stack underflow'
+           entering = false}
+           else{
+           let y = parseInt(stack[stack.length-1])
+           let x = parseInt(stack[stack.length-2])
+           result = x+y
+           stack.pop()
+           stack.pop()
+           stack.push(result)
+           numbers.innerHTML = result
+           entering = false
+           }
+           }else{
+           if (stack.length <2){
+           init()
+           numbers.innerHTML = 'stack underflow'
+           entering = false}
+           else {
+           let y = parseInt(stack[stack.length-1])
+           let x = parseInt(stack[stack.length-2])
+
+           result = x+y
+           stack.pop()
+           stack.pop()
+           stack.push(result)
+           numbers.innerHTML = result
+           entering = false
+           }}
+
+           }
+
+         function minus(){
+           let numbers = document.getElementById("output")
+
+           if (entering){
+           if (stack.length <2){
+           init()
+           numbers.innerHTML = 'stack underflow'
+           entering = false}
+           else{
+           let y = parseInt(stack[stack.length-1])
+           let x = parseInt(stack[stack.length-2])
+           result = x-y
+           stack.pop()
+           stack.pop()
+           stack.push(result)
+           numbers.innerHTML = result
+           entering = false
+           }
+           }else{
+           if (stack.length <2){
+           init()
+           numbers.innerHTML = 'stack underflow'
+           entering = false}
+           else {
+           let y = parseInt(stack[stack.length-1])
+           let x = parseInt(stack[stack.length-2])
+
+           result = x-y
+           stack.pop()
+           stack.pop()
+           stack.push(result)
+           numbers.innerHTML = result
+           entering = false
+           }}
+
+           }
+
+
+         function times(){
+           let numbers = document.getElementById("output")
+
+           if (entering){
+           if (stack.length <2){
+           init()
+           numbers.innerHTML = 'stack underflow'
+           entering = false}
+           else{
+           let y = parseInt(stack[stack.length-1])
+           let x = parseInt(stack[stack.length-2])
+           result = x*y
+           stack.pop()
+           stack.pop()
+           stack.push(result)
+           numbers.innerHTML = result
+           entering = false
+           }
+           }else{
+           if (stack.length <2){
+           init()
+           numbers.innerHTML = 'stack underflow'
+           entering = false}
+           else {
+           let y = parseInt(stack[stack.length-1])
+           let x = parseInt(stack[stack.length-2])
+
+           result = x*y
+           stack.pop()
+           stack.pop()
+           stack.push(result)
+           numbers.innerHTML = result
+           entering = false
+           }}
+
+           }
+
+
+         function divide(){
+           let numbers = document.getElementById("output")
+
+           if (entering){
+           if (stack.length <2){
+           init()
+           numbers.innerHTML = 'stack underflow'
+           entering = false}
+           else{
+           let y = parseInt(stack[stack.length-1])
+           let x = parseInt(stack[stack.length-2])
+           if (y === 0){init()
+           numbers.innerHTML = 'divide by zero'
+           entering = false}else{
+           result = Math.floor(x/y)
+           stack.pop()
+           stack.pop()
+           stack.push(result)
+           numbers.innerHTML = result
+           entering = false
+           }}
+           }
+           else{if (stack.length <2){
+           init()
+           numbers.innerHTML = 'stack underflow'
+           entering = false}
+           else{
+           let y = parseInt(stack[stack.length-1])
+           let x = parseInt(stack[stack.length-2])
+           if (y === 0){init()
+           numbers.innerHTML = 'divide by zero'
+           entering = false}else{
+           result = Math.floor(x/y)
+           stack.pop()
+           stack.pop()
+           stack.push(result)
+           numbers.innerHTML = result
+           entering = false
+           }}}
+
+           }
+
+
+    </script>
+</head>
+<body>
+<div class="center" id="output" >0</div>
+<div class = 'wrapper'>
+    <button id="key-7" class="button button_num" onclick="input(this);change_color()">7</button>
+    <button id="key-8" class="button button_num" onclick="input(this);change_color()" >8</button>
+    <button id="key-9" class="button button_num" onclick="input(this);change_color()">9</button>
+    <button id="key-plus" class="button2 button_op" onclick="add();change_color()">&plus;</button>
+    <button id="key-4" class="button button_num" onclick="input(this);change_color()">4</button>
+    <button id ="key-5" class="button button_num" onclick="input(this);change_color()">5</button>
+    <button id="key-6" class="button button_num" onclick="input(this);change_color()">6</button>
+    <button id="key-minus" class="button2 button_op" onclick="minus();change_color()">&minus;</button>
+    <button id="key-1" class="button button_num" onclick="input(this);change_color()">1</button>
+    <button id="key-2" class="button button_num" onclick="input(this);change_color()">2</button>
+    <button id="key-3" class="button button_num" onclick="input(this);change_color()">3</button>
+    <button id="key-times" class="button2 button_op" onclick="times();change_color()">&times;</button>
+    <span style="padding-left:30px"></span>
+    <button id="key-0" class="button button_num" onclick="input(this);change_color()">0</button>
+    <button id="key-push" class="button2 button_op" onclick="push();change_color()">&uarr;</button>
+    <button id="key-divide" class="button2 button_op" onclick="divide();change_color()">&divide;</button>
+</div>
+
+
+
+</body>
+</html>
+
