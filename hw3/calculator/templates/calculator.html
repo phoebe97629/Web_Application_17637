@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>calculator</title>
+    <style>
+        div {
+            padding: 15px
+        }
+
+        .button {
+            background-color: #F9BB50;
+            text-align: center;
+            font-size: 20px;
+            border-radius: 15px;
+            font-size: 40px;
+        }
+
+        .button_num:hover {
+            background-color: #C88C59;
+            color: white;
+        }
+
+        .button2 {
+            background-color: #beaaad;
+            text-align: center;
+            font-size: 20px;
+            border-radius: 15px;
+            font-size: 40px;
+        }
+
+        .button_op:hover {
+            background-color: #9b7779;
+            color: white;
+        }
+
+        .button2::after {
+            content: "";
+            flex: auto;
+        }
+
+        .center {
+            right: 1343.0px;
+            border: 3px solid #f1dfcf;
+            padding: 10px;
+            {% if op == 'cal' %}
+            background-color: #D8E2DA;
+            {% else %}
+            background-color: #f1dfcf;
+            {% endif %}
+        }
+
+        .wrapper {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0px;
+        }
+
+    </style>
+</head>
+<body>
+<form method="post">
+    <div class="center" id="output">{{ output }}</div>
+    <input type="hidden" name="stack" value="{{ stack }}">
+    <input type="hidden" name="output" value="{{ output }}">
+    <input type="hidden" name="entering" value="{{ entering }}">
+    <div class='wrapper'>
+        <button type="submit" name="button" value="7" id="key-7" class="button button_num">7</button>
+        <button type="submit" name="button" value="8" id="key-8" class="button button_num">8</button>
+        <button type="submit" name="button" value="9" id="key-9" class="button button_num">9</button>
+        <button type="submit" name="button" value="plus" id="key-plus" class="button2 button_op">&plus;</button>
+        <button type="submit" name="button" value="4" id="key-4" class="button button_num">4</button>
+        <button type="submit" name="button" value="5" id="key-5" class="button button_num">5</button>
+        <button type="submit" name="button" value="6" id="key-6" class="button button_num">6</button>
+        <button type="submit" name="button" value="minus" id="key-minus" class="button2 button_op">&minus;</button>
+        <button type="submit" name="button" value="1" id="key-1" class="button button_num">1</button>
+        <button type="submit" name="button" value="2" id="key-2" class="button button_num">2</button>
+        <button type="submit" name="button" value="3" id="key-3" class="button button_num">3</button>
+        <button type="submit" name="button" value="times" id="key-times" class="button2 button_op">&times;</button>
+        <span style="padding-left:30px"></span>
+        <button type="submit" name="button" value="0" id="key-0" class="button button_num">0</button>
+        <button type="submit" name="button" value="push" id="key-push" class="button2 button_op">&uarr;</button>
+        <button type="submit" name="button" value="divide" id="key-divide" class="button2 button_op">&divide;</button>
+    </div>
+    {% csrf_token %}
+</form>
+
+</body>
+</html>
+
