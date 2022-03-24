@@ -1,0 +1,55 @@
+{% extends "socialnetwork/base.html" %}
+
+{% block user-info %}
+    <div>
+        <a href="{% url 'my_profile' %}" class="navlink" id="id_nav_profile">
+            <button>{{user.first_name}} {{user.last_name}} </button>
+        </a>
+    </div>
+    <div>
+        <a href="{% url 'global' %}" class="navlink" id="id_nav_global_stream">
+            <button>Global</button>
+        </a>
+        <a href="{% url 'follower' %}" class="navlink" id="id_nav_follower_stream">
+            <button>Follower</button>
+        </a>
+        <a href="{% url 'logout' %}" id='id_nav_logout'>
+            <button class="navlink">Logout</button>
+        </a>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <p class='big-heading'  id="id_page_name">Follower Stream</p>
+
+
+   <div class="message" id="id_post_div_6">
+        <span>Post By: </span>
+        <a href="{% url 'follower_profile' %}" class="navlink">
+            <Span id="id_post_profile_6">Little Rabbit</span>
+        </a>
+        <span id="id_post_text_6"> I'm mole best friend! </span>
+        <span id="id_post_date_time_6" class="time_message">8/15/2022 5:20 PM</span>
+    </div>
+
+
+    <div class="comment_message" id="id_comment_div_6">
+        <span>Commented By: </span>
+        <a href="{% url 'follower_profile' %}" class="navlink" id="id_comment_profile_6">
+            Little Rabbit
+        </a>
+        <span id="id_comment_text_6"> I'm mole's best friend! </span>
+        <span id="id_comment_date_time_6" class="time_message">8/15/2022 5:20 PM</span>
+    </div>
+
+
+
+    <div>Comment:</div>
+    <input type="text" id="id_comment_input_text_6">
+
+    <button id="id_comment_button_6">submit</button>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "socialnetwork/base.html" %}
+
+{% block user-info %}
+    <div>
+        <a href="{% url 'my_profile' %}" class="navlink" id='id_nav_profile'>
+            <button>{{user.first_name}} {{user.last_name}} </button>
+        </a>
+    </div>
+    <div>
+        <a href="{% url 'global' %}" class="navlink" id="id_nav_global_stream">
+            <button>Global</button>
+        </a>
+        <a href="{% url 'follower' %}" class="navlink" id="id_nav_follower_stream">
+            <button>Follower</button>
+        </a>
+        <a href="{% url 'logout' %}" id='id_nav_logout'>
+            <button class="navlink">Logout</button>
+        </a>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <p class='big-heading'  id="id_page_name">Profile Page for Little Rabbit</p>
+
+   
+    <img src="../static/follower_profile.jpg" alt="Profile" id="id_user_picture">
+
+    <div id="id_user_bio" class="content">Little Rabbit is mole's best friend</div>
+    <button id="id_unfollow">unfollow</button>
+    
+    
+
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "socialnetwork/base.html" %}
+
+{% block user-info %}
+    <div>
+        <a href="{% url 'my_profile' %}" class="navlink" id='id_nav_profile'>
+            <button>{{user.first_name}} {{user.last_name}} </button>
+        </a>
+    </div>
+    <div>
+        <a href="{% url 'global' %}" class="navlink" id="id_nav_global_stream">
+            <button>Global</button>
+        </a>
+        <a href="{% url 'follower' %}" class="navlink" id="id_nav_follower_stream">
+            <button>Follower</button>
+        </a>
+        <a href="{% url 'logout' %}" id='id_nav_logout'>
+            <button class="navlink">Logout</button>
+        </a>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <p class='big-heading'  id="id_page_name">Profile Page for {{user.first_name}} {{user.last_name}}</p>
+
+   
+    <img src="../static/profile.jpg" alt="Profile" id='id_user_picture'>
+
+    <textarea id="id_bio_input_text">Little Mole is a friendly mole from Czech</textarea>
+    <div> Profile Picture:</div>
+    <button id="id_profile_picture">Choose File</button>
+    <div>NO file chosen</div>
+    <button id="id_update_profile_button">Submit</button>
+    <div id="id_profile_link_1">
+        You are following: 
+        <li>Littel Rabbit</li>
+        <li>Littel Eagle</li>
+        <li>Littel Hedgehog</li>
+    </div>
+
+
+{% endblock %}
