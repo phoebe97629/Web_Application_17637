@@ -1,0 +1,50 @@
+{% extends "socialnetwork/base.html" %}
+
+{% block user-info %}
+    <div>
+        <a href="{% url 'my_profile' %}"  id="id_nav_profile">
+            <button class="button button">{{user.first_name}} {{user.last_name}} </button>
+        </a>
+    </div>
+    <div>
+        <a href="{% url 'global' %}"  id="id_nav_global_stream">
+            <button class="button button">Global</button>
+        </a>
+        <a href="{% url 'follower' %}" id="id_nav_follower_stream">
+            <button class="button button">Follower</button>
+        </a>
+        <a href="{% url 'logout' %}" id='id_nav_logout'>
+            <button class="button button">Logout</button>
+        </a>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <p class='big-heading'  id="id_page_name">Global Stream</p>
+
+
+    <div>
+        <label>New Post:</label>
+        <input id="id_post_input_text" type="text" name="item">
+        <button onclick="addItem()" id = 'id_post_button'>Submit</button>
+        <span id="error" ></span>
+    </div>
+
+    <div id="commnet-list">
+    </div>
+
+    <hr>
+
+    <script >
+        var addItemURL = "{% url 'ajax-add-item' %}"
+        var addCommentURL = "{% url 'add-comment' %}"
+
+        window.onload = getList;
+
+        window.setInterval(getList, 5000);
+
+    </script>
+
+
+
+{% endblock %}
