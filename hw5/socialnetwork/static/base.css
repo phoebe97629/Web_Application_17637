@@ -1,0 +1,119 @@
+#id_site_name {
+    font-size: xx-large;
+    font-weight: bold;
+    font-family: georgia;
+    text-align: left;
+    padding: 25px 50px;
+}
+
+#id_header_div{
+    background-color: #9aadc2;
+
+}
+
+.user-info {
+    text-align: right;
+    font-family: sans-serif; 
+    padding-right: 10px;
+    font-size: x-large;
+}
+
+.message {
+    color:#363E54;
+    text-align: center;
+    font-weight: bold;
+    font-size: x-large;
+    font-family: sans-serif;
+    /*padding: 25px 50px;*/
+}
+
+.comment_message {
+    color:blue;
+    text-align: center;
+    font-weight: bold;
+    font-size: x-large;
+    font-family: sans-serif;
+    /*padding: 25px 50px;*/
+    margin-left: 30px;
+}
+
+.time_message {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    font-family: sans-serif;
+    font-size: x-large;
+    /*padding: 25px 50px;*/
+    font-style: italic;
+}
+
+
+.content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    font-family: sans-serif;
+    font-size: x-large;
+    padding: 25px 50px;
+}
+
+.errorlist {
+    color:red;
+}
+
+.list {
+    padding: 3px;
+}
+
+.list-link {
+    padding: 5px;
+}
+
+.list-link:hover {
+     background-color: blue;
+}
+
+th {
+    font-weight: normal;
+    text-align: left;
+}
+
+a {
+     text-decoration: none;
+     color:black;
+}
+
+.button {
+    font-size: x-large;
+    background-color: #d7aca9;
+    padding: 3px;
+    border-radius: 12px;
+}
+.button:hover{
+    background-color: #eee3e0;
+    color: floralwhite;
+}
+
+input {
+    font-size: x-large;
+}
+
+div, form {
+    padding: 4px;
+}
+
+
+.navlink {
+    background-color: #bcaaa0;
+}
+
+.letter {
+    padding: 3px;
+    font-family: sans-serif;
+    font-size: x-large;
+
+}
+
+.letter:hover {
+     background-color: #e4bc9c;
+}

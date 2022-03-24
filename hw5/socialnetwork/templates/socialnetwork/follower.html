@@ -1,0 +1,50 @@
+{% extends "socialnetwork/base.html" %}
+
+{% block user-info %}
+    <div>
+        <a href="{% url 'my_profile' %}"  id="id_nav_profile">
+            <button class="button button">{{user.first_name}} {{user.last_name}} </button>
+        </a>
+    </div>
+    <div>
+        <a href="{% url 'global' %}" id="id_nav_global_stream">
+            <button class="button button">Global</button>
+        </a>
+        <a href="{% url 'follower' %}"  id="id_nav_follower_stream">
+            <button class="button button">Follower</button>
+        </a>
+        <a href="{% url 'logout' %}" id='id_nav_logout'>
+            <button class="button button">Logout</button>
+        </a>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <p class='big-heading'  id="id_page_name">Follower Stream</p>
+
+    <form  action="{% url 'add-post' %}" method="post">
+        {% csrf_token %}
+    </form>
+
+    {% for post in posts %}
+        {% if post.created_by in request.user.profile.following.all %}
+            <div id='id_post_div_{{post.id}}' class="message">
+
+                <span>Post By:</span>
+                <a href="{% url 'other_profile' post.created_by.id %}" id="id_post_profile_{{ post.id }}"> {{post.created_by.first_name}} {{post.created_by.last_name}}</a>
+                <span id="id_post_text_{{ post.id }}">{{post.text}}</span>
+                <span class="time_message" id="id_post_date_time_{{ post.id }}"> {{post.created_time|date:"n/j/Y g:i A"}} </span>
+
+                <div>Comment:</div>
+                <input id="id_comment_input_text_{{ post.id }}">
+
+                <button id="id_comment_button_{{ post.id }}">submit</button>
+
+            </div>
+        {% endif %}
+    {% endfor %}
+
+
+
+
+{% endblock %}
