@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE items [
+    <!ELEMENT items (item*)>
+    <!ELEMENT item (id, text, created_by, created_time)>
+    <!ELEMENT id (#PCDATA)>
+    <!ELEMENT text (#PCDATA)>
+    <!ELEMENT created_by (#PCDATA)>
+    <!ELEMENT created_time (#PCDATA)>
+]>
+
+<items>
+    {% for item in items %}
+        <item>
+            <id>{{item.id}}</id>
+            <text>{{item.text}}</text>
+            <ipAddr>{{item.created_by}}</ipAddr>
+            <user>{{ item.created_time }}</user>
+        </item>
+    {% endfor %}
+</items>
